@@ -16,12 +16,14 @@ if [[ "$SYSTEM" == "debian" && "$VERSION" == "10" ]]; then
     echo "您正在使用 Debian 10 (Buster)"
     echo "请选择要替换的镜像源："
     echo "1) 官方源"
-    echo "2) 腾讯云源"
-    echo "3) 阿里云源"
+    echo "2) 清华源"
+    echo "3) 中科大源"
+    echo "4) 腾讯源"
+    echo "5) 阿里源"
+    echo "6) 华为源"
     read -p "请输入编号: " choice
     case $choice in
-                    1)
-                        cat > /etc/apt/sources.list << EOF
+        1) cat > /etc/apt/sources.list << EOF
 deb http://deb.debian.org/debian/ buster main contrib non-free
 deb-src http://deb.debian.org/debian/ buster main contrib non-free
 
@@ -33,39 +35,61 @@ deb-src http://deb.debian.org/debian/ buster-backports main contrib non-free
 
 deb http://deb.debian.org/debian-security/ buster/updates main contrib non-free
 deb-src http://deb.debian.org/debian-security/ buster/updates main contrib non-free
-EOF
-                        ;;
-                    2)
-                        cat > /etc/apt/sources.list << EOF
-deb http://mirrors.tencentyun.com/debian/ buster main contrib non-free
-deb-src http://mirrors.tencentyun.com/debian/ buster main contrib non-free
+EOF ;;
+        2) cat > /etc/apt/sources.list << EOF
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib non-free
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main contrib non-free
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-backports main contrib non-free
+deb https://mirrors.tuna.tsinghua.edu.cn/debian-security/ buster/updates main contrib non-free
 
-deb http://mirrors.tencentyun.com/debian/ buster-updates main contrib non-free
-deb-src http://mirrors.tencentyun.com/debian/ buster-updates main contrib non-free
+deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib non-free
+deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main contrib non-free
+deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-backports main contrib non-free
+deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security/ buster/updates main contrib non-free
+EOF ;;
+        3) cat > /etc/apt/sources.list << EOF
+deb https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free
+deb https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free
+deb https://mirrors.ustc.edu.cn/debian/ buster-backports main contrib non-free
+deb https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free
 
-deb http://mirrors.tencentyun.com/debian/ buster-backports main contrib non-free
-deb-src http://mirrors.tencentyun.com/debian/ buster-backports main contrib non-free
+deb-src https://mirrors.ustc.edu.cn/debian/ buster main contrib non-free
+deb-src https://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free
+deb-src https://mirrors.ustc.edu.cn/debian/ buster-backports main contrib non-free
+deb-src https://mirrors.ustc.edu.cn/debian-security/ buster/updates main contrib non-free
+EOF ;;
+        4) cat > /etc/apt/sources.list << EOF
+deb http://mirrors.cloud.tencent.com/debian/ buster main non-free contrib
+deb http://mirrors.cloud.tencent.com/debian-security buster/updates main
+deb http://mirrors.cloud.tencent.com/debian/ buster-updates main non-free contrib
+deb http://mirrors.cloud.tencent.com/debian/ buster-backports main non-free contrib
 
-deb http://mirrors.tencentyun.com/debian-security/ buster/updates main contrib non-free
-deb-src http://mirrors.tencentyun.com/debian-security/ buster/updates main contrib non-free
-EOF
-                        ;;
-                    3)
-                        cat > /etc/apt/sources.list << EOF
-deb http://mirrors.cloud.aliyuncs.com/debian/ buster main contrib non-free
-deb-src http://mirrors.cloud.aliyuncs.com/debian/ buster main contrib non-free
+deb-src http://mirrors.cloud.tencent.com/debian-security buster/updates main
+deb-src http://mirrors.cloud.tencent.com/debian/ buster main non-free contrib
+deb-src http://mirrors.cloud.tencent.com/debian/ buster-updates main non-free contrib
+deb-src http://mirrors.cloud.tencent.com/debian/ buster-backports main non-free contrib
+EOF ;;
+        5) cat > /etc/apt/sources.list << EOF
+deb http://mirrors.aliyun.com/debian/ buster main non-free contrib
+deb http://mirrors.aliyun.com/debian-security buster/updates main
+deb http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
+deb http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
 
-deb http://mirrors.cloud.aliyuncs.com/debian/ buster-updates main contrib non-free
-deb-src http://mirrors.cloud.aliyuncs.com/debian/ buster-updates main contrib non-free
+deb-src http://mirrors.aliyun.com/debian-security buster/updates main
+deb-src http://mirrors.aliyun.com/debian/ buster main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
+EOF ;;
+        6) cat > /etc/apt/sources.list << EOF
+deb https://mirrors.huaweicloud.com/debian/ buster main contrib non-free
+deb https://mirrors.huaweicloud.com/debian/ buster-updates main contrib non-free
+deb https://mirrors.huaweicloud.com/debian/ buster-backports main contrib non-free
+deb https://mirrors.huaweicloud.com/debian-security/ buster/updates main contrib non-free
 
-deb http://mirrors.cloud.aliyuncs.com/debian/ buster-backports main contrib non-free
-deb-src http://mirrors.cloud.aliyuncs.com/debian/ buster-backports main contrib non-free
-
-deb http://mirrors.cloud.aliyuncs.com/debian-security/ buster/updates main contrib non-free
-deb-src http://mirrors.cloud.aliyuncs.com/debian-security/ buster/updates main contrib non-free
-EOF
-            ;;
-            
+deb-src https://mirrors.huaweicloud.com/debian/ buster main contrib non-free
+deb-src https://mirrors.huaweicloud.com/debian/ buster-updates main contrib non-free
+deb-src https://mirrors.huaweicloud.com/debian/ buster-backports main contrib non-free 
+EOF ;;
         *) 
             echo "无效的选择，请重新运行脚本并选择有效的编号。"
             ;;
