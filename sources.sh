@@ -1,4 +1,5 @@
 #!/bin/bash
+#de10-12+ub22
 
 # 备份现有的 sources.list 文件
 echo "正在备份当前的 sources.list 到 sources.list.old"
