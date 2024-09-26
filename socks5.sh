@@ -43,7 +43,7 @@ if [ -f /etc/debian_version ]; then
     echo "用户 $username 已创建，密码为 $password"
 
 # 获取本机 IP 地址
-local_ip=$(curl -s cip.cc | grep -oP '(?<=IP: ).*?(?=</p>)')
+local_ip=$(curl -s cip.cc | grep -oP '\d{1,3}(\.\d{1,3}){3}')
 echo "$local_ip:$port:$username:$password"
 
 
