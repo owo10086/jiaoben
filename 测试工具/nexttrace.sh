@@ -32,7 +32,7 @@ function install_linux() {
 # 安装 nexttrace (GHPROXY 国内镜像)
 function install_ghproxy() {
     echo "正在安装 nexttrace (GHPROXY 国内镜像)..."
-    bash <(curl -Ls https://ghproxy.com/https://raw.githubusercontent.com/sjlleo/nexttrace/main/nt_install.sh)
+    bash <(curl -Ls https://ghp.ci/https://raw.githubusercontent.com/sjlleo/nexttrace/main/nt_install.sh)
     echo "安装完成!"
     read -p "按任意键返回菜单..." && menu
 }
