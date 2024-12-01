@@ -20,4 +20,10 @@ rm -rf /var/log/nezha
 # 重新載入 systemd
 systemctl daemon-reload
 
+#卸载 Docker Compose 版哪吒面板
+cd /opt/nezha/dashboard
+docker compose down --volumes --rmi all
+rm -rf /opt/nezha
+
+
 echo "哪吒面板已完全移除"
