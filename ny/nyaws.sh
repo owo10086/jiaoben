@@ -6,16 +6,14 @@ run_install() {
     local service_name="$2"
     
     echo "正在执行命令: $cmd"
-    # 使用 expect 模拟所有交互式输入
-    expect <<EOF
+    # 使用 expect 模拟所有交互式输入，强制英文环境以避免中文编码问题
+    env LANG=C expect <<EOF
+        set timeout 60
         spawn $cmd
-        expect "请输入服务名 [默认 nyanpass] : "
-        send "$service_name\r"
-        expect "y/N"
-        send "y\r"
-        expect "y/N"
-        send "y\r"
-        expect "安装成功"
+        expect "请输入服务名 *:" { send "$service_name\r" }
+        expect "y/N" { send "y\r" }
+        expect "y/N" { send "y\r" }
+        expect "安装成功" { puts "安装成功检测到" }
         expect eof
 EOF
     
@@ -53,13 +51,13 @@ if ! command -v curl &> /dev/null; then
     exit 1
 fi
 
-# 第1次安装
+# 第1次安装，服务名 ny1
 run_install "bash <(curl -fLSs https://dl.nyafw.com/download/nyanpass-install.sh) rel_nodeclient \"-o -t 8c643eca-2645-4842-b2b6-f30571ce09e9 -u https://np.zui.photos\"" "ny1"
 
-# 第2次安装
+# 第2次安装，服务名 ny2
 run_install "bash <(curl -fLSs https://dl.nyafw.com/download/nyanpass-install.sh) rel_nodeclient \"-o -t e60552e0-3e4e-4c0b-8f7c-5ec756dea0ce -u https://xuan.dxmax.buzz\"" "ny2"
 
-# 第3次安装
+# 第3次安装，服务名 ny3
 run_install "bash <(curl -fLSs https://dl.nyafw.com/download/nyanpass-install.sh) rel_nodeclient \"-o -t 13abdb58-8773-4fb3-a018-7cf6d1728ff8 -u https://materelay.com\"" "ny3"
 
 echo "所有安装已完成！"
