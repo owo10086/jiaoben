@@ -33,9 +33,9 @@ install_ny_panel() {
         expect \"*服务名*:*\"
         send \"${panel_name}\r\"
         expect \"*优化*:*\"
-        send \"y\r\"
+        send \"n\r\"
         expect \"*安装*:*\"
-        send \"y\r\"
+        send \"n\r\"
         expect eof
     "
     
