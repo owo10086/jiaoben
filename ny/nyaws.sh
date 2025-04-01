@@ -17,10 +17,6 @@ cleanup_service "ny1"
 echo -e "ny1\ny\ny" | bash <(curl -fLSs https://dl.nyafw.com/download/nyanpass-install.sh) rel_nodeclient "-o -t 8c643eca-2645-4842-b2b6-f30571ce09e9 -u https://np.zui.photos"
 sleep 3
 
-# 安装第二个面板 (ny2)
-cleanup_service "ny2"
-echo -e "ny2\ny\ny" | bash <(curl -fLSs https://dl.nyafw.com/download/nyanpass-install.sh) rel_nodeclient "-o -t e60552e0-3e4e-4c0b-8f7c-5ec756dea0ce -u https://xuan.dxmax.buzz"
-sleep 3
 
 # 安装第三个面板 (ny3)
 cleanup_service "ny3"
@@ -29,4 +25,4 @@ sleep 3
 
 # 检查服务状态
 echo "所有NY面板安装完成，检查状态："
-systemctl status ny1 ny2 ny3 --no-pager
+systemctl status ny1 ny3 --no-pager
