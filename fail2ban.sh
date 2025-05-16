@@ -80,3 +80,4 @@ fi
 echo "▶ SSH 端口已设置为 $SSH_PORT"
 echo "▶ Fail2ban 在 $maxretry 次失败后会封禁"
 echo "▶ 封禁时长：$bantime_hours 小时（$bantime 秒）"
+echo "▶ 卸载脚本：wget https://raw.githubusercontent.com/FunctionClub/Fail2ban/master/uninstall.sh && bash uninstall.sh"
